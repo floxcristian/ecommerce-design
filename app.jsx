@@ -4,7 +4,7 @@ const { VehicleModal, MiniCart } = window.Catalog;
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "primaryColor": "#006DB6",
-  "theme": "dark",
+  "theme": "light",
   "density": "comfortable",
   "fontFamily": "Geist",
   "btnStyle": "rounded",
