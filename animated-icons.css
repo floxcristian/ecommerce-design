@@ -1,0 +1,349 @@
+/* Animated category icons — Airbnb-style hover animations */
+
+.ai-icon {
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-trigger:hover .ai-icon {
+  transform: scale(1.08);
+}
+
+/* Lubricantes — drop falls into can */
+.ai-lub .ai-drop { transform: translateY(-6px); opacity: 0; transition: all 0.3s ease; }
+.ai-trigger:hover .ai-lub .ai-drop { animation: drop-fall 1.2s ease-in-out infinite; }
+@keyframes drop-fall {
+  0% { transform: translateY(-12px) scale(0.8); opacity: 0; }
+  20% { transform: translateY(-12px) scale(1); opacity: 1; }
+  60% { transform: translateY(0) scale(1); opacity: 1; }
+  70% { transform: translateY(2px) scale(1.2, 0.6); opacity: 0.6; }
+  100% { transform: translateY(2px) scale(0); opacity: 0; }
+}
+.ai-trigger:hover .ai-lub .ai-can { animation: can-bob 1.2s ease-in-out infinite; transform-origin: 32px 50px; }
+@keyframes can-bob {
+  60%, 70% { transform: translateY(0); }
+  72% { transform: translateY(2px) scaleY(0.96); }
+  85% { transform: translateY(-1px) scaleY(1.02); }
+  100% { transform: translateY(0); }
+}
+
+/* Frenos — disc spins, caliper clamps */
+.ai-frenos .ai-disc-spin { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.ai-trigger:hover .ai-frenos .ai-disc-spin { animation: disc-spin 2s linear infinite; }
+@keyframes disc-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.ai-frenos .ai-caliper { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: center; }
+.ai-trigger:hover .ai-frenos .ai-caliper { animation: caliper-clamp 1.5s ease-in-out infinite; }
+@keyframes caliper-clamp {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  20% { transform: translateY(-2px) scaleY(0.95); }
+  40% { transform: translateY(2px) scaleY(1.05); }
+}
+
+/* Filtros — pleats expand */
+.ai-filtros .ai-filter-body, .ai-filtros .ai-pleats { transition: transform 0.4s ease; transform-origin: 32px 50px; }
+.ai-trigger:hover .ai-filtros .ai-filter-body { animation: filter-pulse 1.6s ease-in-out infinite; }
+@keyframes filter-pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.06) scaleX(0.97); }
+}
+
+/* Baterias — spark appears */
+.ai-bat .ai-bat-body { transform-origin: 32px 50px; transition: transform 0.3s ease; }
+.ai-trigger:hover .ai-bat .ai-bat-body { animation: bat-jiggle 0.8s ease-in-out infinite; }
+@keyframes bat-jiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-2deg) scale(1.02); }
+  75% { transform: rotate(2deg) scale(1.02); }
+}
+.ai-bat .ai-spark { transform-origin: 32px 14px; }
+.ai-trigger:hover .ai-bat .ai-spark { animation: spark-pop 1.2s ease-in-out infinite; }
+@keyframes spark-pop {
+  0%, 60%, 100% { opacity: 0; transform: scale(0.5); }
+  20% { opacity: 1; transform: scale(1.2); }
+  40% { opacity: 1; transform: scale(0.9); }
+}
+
+/* Neumaticos — tire rolls + spins */
+.ai-neu .ai-tire-roll { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.ai-trigger:hover .ai-neu .ai-tire-roll { animation: tire-roll 2s ease-in-out infinite; }
+@keyframes tire-roll {
+  0%, 100% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+}
+.ai-neu .ai-tire-spin { animation: none; }
+.ai-trigger:hover .ai-neu .ai-tire-spin { animation: disc-spin 1.2s linear infinite; }
+
+/* Suspension — spring compresses */
+.ai-sus .ai-spring { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: 32px 33px; }
+.ai-trigger:hover .ai-sus .ai-spring { animation: spring-compress 1s ease-in-out infinite; }
+@keyframes spring-compress {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.65) scaleX(1.1); }
+}
+
+/* Motor — pistons fire */
+.ai-motor .ai-piston { transition: transform 0.2s ease; }
+.ai-trigger:hover .ai-motor .ai-piston-0 { animation: piston-fire 0.6s ease-in-out infinite; animation-delay: 0s; }
+.ai-trigger:hover .ai-motor .ai-piston-1 { animation: piston-fire 0.6s ease-in-out infinite; animation-delay: 0.15s; }
+.ai-trigger:hover .ai-motor .ai-piston-2 { animation: piston-fire 0.6s ease-in-out infinite; animation-delay: 0.3s; }
+.ai-trigger:hover .ai-motor .ai-piston-3 { animation: piston-fire 0.6s ease-in-out infinite; animation-delay: 0.45s; }
+@keyframes piston-fire {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Electrico — bolt zaps */
+.ai-elec .ai-bolt { transform-origin: 32px 32px; transition: transform 0.2s ease; }
+.ai-trigger:hover .ai-elec .ai-bolt { animation: bolt-zap 0.8s ease-in-out infinite; }
+@keyframes bolt-zap {
+  0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 transparent); }
+  20% { transform: scale(1.15) rotate(-3deg); filter: drop-shadow(0 0 8px rgba(255,214,10,0.8)); }
+  40% { transform: scale(0.95) rotate(3deg); }
+  60% { transform: scale(1.1) rotate(-2deg); filter: drop-shadow(0 0 6px rgba(255,91,31,0.6)); }
+}
+
+/* Transmision — gears spin */
+.ai-trans .ai-gear-1 { transition: transform 0.4s ease; }
+.ai-trigger:hover .ai-trans .ai-gear-1 { animation: gear-cw 3s linear infinite; }
+.ai-trigger:hover .ai-trans .ai-gear-2 { animation: gear-ccw 2.25s linear infinite; }
+.ai-trigger:hover .ai-trans .ai-gear-3 { animation: gear-ccw 1.7s linear infinite; }
+@keyframes gear-cw { to { transform: rotate(360deg); } }
+@keyframes gear-ccw { to { transform: rotate(-360deg); } }
+
+/* Herramientas — wrench tightens */
+.ai-tool .ai-wrench { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ai-trigger:hover .ai-tool .ai-wrench { animation: wrench-twist 1s ease-in-out infinite; }
+@keyframes wrench-twist {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-15deg); }
+  60% { transform: rotate(8deg); }
+}
+
+/* Seguridad — shield pops + check draws */
+.ai-shield .ai-shield-pop { transform-origin: 32px 32px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ai-trigger:hover .ai-shield .ai-shield-pop { animation: shield-pop 1.4s ease-in-out infinite; }
+@keyframes shield-pop {
+  0%, 100% { transform: scale(1) translateY(0); }
+  30% { transform: scale(1.1) translateY(-2px); }
+  60% { transform: scale(0.95) translateY(1px); }
+}
+.ai-shield .ai-check { stroke-dasharray: 40; stroke-dashoffset: 40; transition: stroke-dashoffset 0.4s ease; }
+.ai-trigger:hover .ai-shield .ai-check { animation: check-draw 1.4s ease-in-out infinite; }
+@keyframes check-draw {
+  0% { stroke-dashoffset: 40; }
+  40%, 90% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 40; }
+}
+
+/* Accesorios — star spins, sparks twinkle */
+.ai-acc .ai-star-spin { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ai-trigger:hover .ai-acc .ai-star-spin { animation: star-spin 2s ease-in-out infinite; }
+@keyframes star-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.ai-acc .ai-spark-1, .ai-acc .ai-spark-2, .ai-acc .ai-spark-3 { opacity: 0; transition: opacity 0.2s ease; }
+.ai-trigger:hover .ai-acc .ai-spark-1 { animation: twinkle 1.5s ease-in-out infinite; animation-delay: 0s; }
+.ai-trigger:hover .ai-acc .ai-spark-2 { animation: twinkle 1.5s ease-in-out infinite; animation-delay: 0.5s; }
+.ai-trigger:hover .ai-acc .ai-spark-3 { animation: twinkle 1.5s ease-in-out infinite; animation-delay: 1s; }
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Card hover lift for category buttons */
+.ai-card-trigger {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, background 0.2s ease;
+}
+.ai-card-trigger:hover {
+  border-color: var(--primary) !important;
+  background: var(--surface) !important;
+}
+
+/* Header icon button hover bounce */
+.ai-headicon { transition: opacity 0.2s ease; }
+.ai-headicon:hover { opacity: 0.85; }
+
+/* ============ HEADER ICONS (HeaderAnim) ============ */
+.ha-icon { overflow: visible; }
+
+/* Truck — wheels spin, motion lines appear */
+.ha-truck .ha-wheel { transform-origin: center; transition: transform 0.3s ease; }
+.ha-trigger:hover .ha-truck .ha-wheel-1 { animation: ha-wheel-spin 0.8s linear infinite; transform-origin: 6px 17px; }
+.ha-trigger:hover .ha-truck .ha-wheel-2 { animation: ha-wheel-spin 0.8s linear infinite; transform-origin: 16px 17px; }
+@keyframes ha-wheel-spin { to { transform: rotate(360deg); } }
+.ha-truck .ha-truck-body { transition: transform 0.3s ease; }
+.ha-trigger:hover .ha-truck .ha-truck-body { animation: ha-truck-bob 0.8s ease-in-out infinite; }
+@keyframes ha-truck-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5px); }
+}
+.ha-trigger:hover .ha-truck .ha-truck-lines { animation: ha-lines-fade 0.8s ease-in-out infinite; }
+@keyframes ha-lines-fade {
+  0%, 100% { opacity: 0; transform: translateX(0); }
+  50% { opacity: 0.8; transform: translateX(-2px); }
+}
+
+/* Search — magnifier wiggles */
+.ha-search .ha-mag-circle, .ha-search .ha-mag-handle { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: 10px 10px; }
+.ha-trigger:hover .ha-search .ha-mag-circle { animation: ha-mag-wiggle 1s ease-in-out infinite; }
+.ha-trigger:hover .ha-search .ha-mag-handle { animation: ha-mag-wiggle 1s ease-in-out infinite; transform-origin: 14px 14px; }
+@keyframes ha-mag-wiggle {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  25% { transform: rotate(-8deg) translate(-1px, 0); }
+  75% { transform: rotate(8deg) translate(1px, 0); }
+}
+
+/* Garage — door slides up */
+.ha-garage .ha-garage-door { transform-origin: 12px 20px; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ha-trigger:hover .ha-garage .ha-garage-door { animation: ha-door-open 1.4s ease-in-out infinite; }
+@keyframes ha-door-open {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.1); opacity: 0.3; }
+}
+.ha-trigger:hover .ha-garage .ha-garage-roof { animation: ha-roof-bob 1.4s ease-in-out infinite; transform-origin: 12px 7px; }
+@keyframes ha-roof-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+/* User — head nods, body breathes */
+.ha-user .ha-user-head { transform-origin: 12px 11px; transition: transform 0.3s ease; }
+.ha-trigger:hover .ha-user .ha-user-head { animation: ha-head-nod 1.2s ease-in-out infinite; }
+@keyframes ha-head-nod {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1px) rotate(-5deg); }
+}
+.ha-user .ha-user-body { transition: transform 0.3s ease; transform-origin: 12px 20px; }
+.ha-trigger:hover .ha-user .ha-user-body { animation: ha-body-breathe 1.2s ease-in-out infinite; }
+@keyframes ha-body-breathe {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.05); }
+}
+
+/* Cart — wheels roll, items appear */
+.ha-cart .ha-cart-wheel-1 { transform-origin: 9px 19px; }
+.ha-cart .ha-cart-wheel-2 { transform-origin: 17px 19px; }
+.ha-trigger:hover .ha-cart .ha-cart-wheel-1 { animation: ha-wheel-spin 0.6s linear infinite; }
+.ha-trigger:hover .ha-cart .ha-cart-wheel-2 { animation: ha-wheel-spin 0.6s linear infinite; }
+.ha-cart .ha-cart-body { transition: transform 0.3s ease; }
+.ha-trigger:hover .ha-cart .ha-cart-body { animation: ha-cart-bob 0.6s ease-in-out infinite; }
+@keyframes ha-cart-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5px); }
+}
+.ha-trigger:hover .ha-cart .ha-cart-items { animation: ha-items-drop 1.2s ease-in-out infinite; }
+@keyframes ha-items-drop {
+  0%, 80%, 100% { opacity: 0; transform: translateY(-4px); }
+  20%, 60% { opacity: 1; transform: translateY(0); }
+}
+
+/* Cart pulse when count increments */
+@keyframes cart-pulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); background: var(--accent, #FFD60A); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.cart-badge-pulse { animation: cart-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* Menu — bars stagger */
+.ha-menu .ha-menu-1, .ha-menu .ha-menu-2, .ha-menu .ha-menu-3 { transition: transform 0.2s ease; transform-origin: center; }
+.ha-trigger:hover .ha-menu .ha-menu-1 { animation: ha-bar-slide 0.8s ease-in-out infinite; animation-delay: 0s; }
+.ha-trigger:hover .ha-menu .ha-menu-2 { animation: ha-bar-slide 0.8s ease-in-out infinite; animation-delay: 0.1s; }
+.ha-trigger:hover .ha-menu .ha-menu-3 { animation: ha-bar-slide 0.8s ease-in-out infinite; animation-delay: 0.2s; }
+@keyframes ha-bar-slide {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.6); }
+}
+
+/* ============ FLY TO CART animation ============ */
+.fly-to-cart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 8px 24px rgba(255,91,31,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+
+/* ============ CATEGORY PHOTO ICONS ============ */
+.cat-card { perspective: 800px; }
+.cat-photo-wrap {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  background: radial-gradient(circle at 50% 45%, rgba(255,255,255,0.92) 0%, rgba(245,245,245,0.85) 55%, rgba(220,220,220,0.7) 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cat-photo {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15)) contrast(1.05);
+  transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+  will-change: transform;
+  position: relative;
+  z-index: 2;
+}
+:root[data-theme="light"] .cat-photo {
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15)) contrast(1.02);
+}
+/* Glow that pulses behind icon on hover */
+.cat-photo-glow {
+  position: absolute;
+  inset: 15%;
+  background: radial-gradient(circle at center, var(--primary) 0%, transparent 65%);
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.7);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hover state — subtle scale only, no displacement */
+.cat-card:hover .cat-photo {
+  animation: none;
+  transform: scale(1.03);
+  filter: drop-shadow(0 14px 24px rgba(0,0,0,0.5)) drop-shadow(0 0 18px rgba(255,91,31,0.25)) contrast(1.08) saturate(1.1);
+}
+.cat-card:hover .cat-photo-glow {
+  opacity: 0.35;
+  transform: scale(1);
+  animation: cat-glow-pulse 2.4s ease-in-out infinite;
+}
+@keyframes cat-float {
+  0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(0deg) scale(1.04); }
+  25% { transform: translateY(-4px) rotateY(-8deg) rotateX(2deg) scale(1.06); }
+  50% { transform: translateY(-6px) rotateY(0deg) rotateX(4deg) scale(1.08); }
+  75% { transform: translateY(-4px) rotateY(8deg) rotateX(2deg) scale(1.06); }
+}
+@keyframes cat-glow-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.95); }
+  50% { opacity: 0.45; transform: scale(1.1); }
+}
+
+/* Per-category easter eggs on hover */
+.cat-card[data-cat="neumaticos"]:hover .cat-photo,
+.cat-card:hover .cat-photo[alt*="eum"] { animation: cat-roll 1.6s ease-in-out infinite; }
+@keyframes cat-roll {
+  0% { transform: translateY(-4px) rotateZ(0deg) scale(1.06); }
+  100% { transform: translateY(-4px) rotateZ(360deg) scale(1.06); }
+}

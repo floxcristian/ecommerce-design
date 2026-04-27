@@ -1,0 +1,119 @@
+/* Hero Carousel — theme-aware backgrounds using semantic tokens */
+.hero-bg {
+  position: absolute; inset: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* DARK theme — deep brand-tinted gradients */
+[data-theme="dark"] .hero-bg-gradient-blue {
+  background:
+    radial-gradient(ellipse 90% 70% at 80% 0%, rgba(0, 109, 182, 0.55), transparent 65%),
+    radial-gradient(ellipse 70% 80% at 0% 100%, rgba(15, 76, 92, 0.55), transparent 60%),
+    linear-gradient(135deg, #0F2A3A 0%, #0A1820 50%, #0E2030 100%);
+}
+[data-theme="dark"] .hero-bg-gradient-deep {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(127, 185, 53, 0.30), transparent 60%),
+    radial-gradient(ellipse 90% 90% at 20% 80%, rgba(15, 76, 92, 0.85), transparent 65%),
+    linear-gradient(135deg, #0F4C5C 0%, #0A2530 70%);
+}
+[data-theme="dark"] .hero-bg-gradient-bosch {
+  background:
+    radial-gradient(ellipse 80% 70% at 75% 25%, rgba(255, 91, 31, 0.32), transparent 60%),
+    radial-gradient(ellipse 70% 80% at 10% 90%, rgba(0, 109, 182, 0.45), transparent 60%),
+    linear-gradient(135deg, #1A2030 0%, #1E1410 70%);
+}
+[data-theme="dark"] .hero-bg-gradient-green {
+  background:
+    radial-gradient(ellipse 80% 60% at 25% 25%, rgba(127, 185, 53, 0.40), transparent 60%),
+    radial-gradient(ellipse 70% 80% at 90% 90%, rgba(0, 109, 182, 0.45), transparent 60%),
+    linear-gradient(135deg, #1F2E1A 0%, #142028 70%);
+}
+
+/* LIGHT theme — soft brand-tinted washes on near-white */
+[data-theme="light"] .hero-bg-gradient-blue {
+  background:
+    radial-gradient(ellipse 90% 70% at 80% 0%, rgba(0, 109, 182, 0.16), transparent 65%),
+    radial-gradient(ellipse 70% 80% at 0% 100%, rgba(15, 76, 92, 0.10), transparent 60%),
+    linear-gradient(135deg, #F0F6FB 0%, #FFFFFF 50%, #EAF2F8 100%);
+}
+[data-theme="light"] .hero-bg-gradient-deep {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(127, 185, 53, 0.14), transparent 60%),
+    radial-gradient(ellipse 90% 90% at 20% 80%, rgba(15, 76, 92, 0.18), transparent 65%),
+    linear-gradient(135deg, #E6F0F2 0%, #F4F8FA 70%);
+}
+[data-theme="light"] .hero-bg-gradient-bosch {
+  background:
+    radial-gradient(ellipse 80% 70% at 75% 25%, rgba(255, 91, 31, 0.10), transparent 60%),
+    radial-gradient(ellipse 70% 80% at 10% 90%, rgba(0, 109, 182, 0.14), transparent 60%),
+    linear-gradient(135deg, #FFF7F2 0%, #F0F6FB 70%);
+}
+[data-theme="light"] .hero-bg-gradient-green {
+  background:
+    radial-gradient(ellipse 80% 60% at 25% 25%, rgba(127, 185, 53, 0.16), transparent 60%),
+    radial-gradient(ellipse 70% 80% at 90% 90%, rgba(0, 109, 182, 0.14), transparent 60%),
+    linear-gradient(135deg, #F2F8EC 0%, #F0F6FB 70%);
+}
+
+.hero-slide-in {
+  animation: hero-fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
+  z-index: 4;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.hero-arrow:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+.hero-arrow-left { left: 24px; }
+.hero-arrow-right { right: 24px; }
+
+.hero-pagination {
+  position: absolute;
+  bottom: 24px;
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px;
+  z-index: 4;
+}
+.hero-dot {
+  width: 56px; height: 4px;
+  background: var(--border-strong);
+  border: none;
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: width 0.3s, background 0.3s;
+  position: relative;
+  padding: 0;
+}
+.hero-dot:hover { background: var(--text-dim); }
+.hero-dot.active { width: 80px; }
+.hero-dot-fill {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.05s linear;
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .hero-arrow { display: none; }
+  .hero-vehicle-card { display: none; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+}
